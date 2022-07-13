@@ -1,4 +1,4 @@
-	package lib;
+package lib;
 
 public class Person {
   private String employeeId;

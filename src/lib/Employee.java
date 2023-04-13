@@ -4,22 +4,20 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Date;
 
-public class Employee {
-
-	private String employeeId;
-	private String firstName;
-	private String lastName;
-	private String idNumber;
-	private String address;
+public class Employee extends orng {
+	private enum JenisKelamin {
+		Pria,
+		Wanita
+	}
+	private orng pegawai
 	
-	private int yearJoined;
-	private int monthJoined;
-	private int dayJoined;
+	private Date tglMasuk
 	private int monthWorkingInYear;
 	
 	private boolean isForeigner;
-	private boolean gender; //true = Laki-laki, false = Perempuan
+	private JenisKelamin jk;
 	
 	private int monthlySalary;
 	private int otherMonthlyIncome;
@@ -31,26 +29,22 @@ public class Employee {
 	private List<String> childNames;
 	private List<String> childIdNumbers;
 	
-	public Employee(String employeeId, String firstName, String lastName, String idNumber, String address, int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, boolean gender) {
-		this.employeeId = employeeId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.idNumber = idNumber;
-		this.address = address;
-		this.yearJoined = yearJoined;
-		this.monthJoined = monthJoined;
-		this.dayJoined = dayJoined;
-		this.isForeigner = isForeigner;
-		this.gender = gender;
-		
-		childNames = new LinkedList<String>();
-		childIdNumbers = new LinkedList<String>();
+	public Employee() {
+	
 	}
 	
 	/**
 	 * Fungsi untuk menentukan gaji bulanan pegawai berdasarkan grade kepegawaiannya (grade 1: 3.000.000 per bulan, grade 2: 5.000.000 per bulan, grade 3: 7.000.000 per bulan)
 	 * Jika pegawai adalah warga negara asing gaji bulanan diperbesar sebanyak 50%
 	 */
+	
+	public orng getEmployee() {
+		return pegawai;
+	}
+	
+	public void setEmployee(orang pegawai) {
+		this pegawai = pegawai;
+	}
 	
 	public void setMonthlySalary(int grade) {	
 		if (grade == 1) {
@@ -92,10 +86,10 @@ public class Employee {
 	public int getAnnualIncomeTax() {
 		
 		//Menghitung berapa lama pegawai bekerja dalam setahun ini, jika pegawai sudah bekerja dari tahun sebelumnya maka otomatis dianggap 12 bulan.
-		LocalDate date = LocalDate.now();
+		LocalDate tanggalnya = LocalDate.now();
 		
-		if (date.getYear() == yearJoined) {
-			monthWorkingInYear = date.getMonthValue() - monthJoined;
+		if (tanggalnya.getYear() == tglMasuk.getYear()) {
+			monthWorkingInYear = date.getMonthValue() - tglMasuk.getMonth();
 		}else {
 			monthWorkingInYear = 12;
 		}

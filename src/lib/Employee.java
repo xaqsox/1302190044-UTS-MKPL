@@ -29,8 +29,15 @@ public class Employee extends orng {
 	private List<String> childNames;
 	private List<String> childIdNumbers;
 	
-	public Employee() {
-	
+	public Employee(orng pegawai, Date tglMasuk, boolean isForeigner, JenisKelamin jk) {
+		pegawai = new orng();
+		this.setEmployee = pegawai;
+		this.tglMasuk = tglMasuk;
+		this.isForeigner = isForeigner;
+		this.jk = jk;
+		
+		childNames = new LinkedList<String>();
+		childIdNumbers = new LinkedList<String>();
 	}
 	
 	/**
@@ -42,7 +49,7 @@ public class Employee extends orng {
 		return pegawai;
 	}
 	
-	public void setEmployee(orang pegawai) {
+	public void setEmployee(orng pegawai) {
 		this pegawai = pegawai;
 	}
 	
